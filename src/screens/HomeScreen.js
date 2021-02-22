@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import PriceShow from "../components/PriceShow";
 import useApiResults from "../hooks/useApiResults";
