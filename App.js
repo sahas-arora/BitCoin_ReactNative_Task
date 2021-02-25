@@ -10,7 +10,8 @@ import HomeScreen from "./src/screens/HomeScreen";
 const App = () => {
   const Stack = createStackNavigator();
   const [theme, toggleTheme] = useDarkMode();
-  // const [theme, toggleTheme] = useState('dark');
+
+  
   const headerOptions = theme === 'dark' ? {
     headerStyle: {
       backgroundColor: '#00001c',
@@ -31,7 +32,7 @@ const App = () => {
       }
     },
     headerTitleStyle: {
-      color: '#000',
+      color: '#000'
     }
   }
 
