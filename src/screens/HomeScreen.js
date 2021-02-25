@@ -1,17 +1,25 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
+import ToggleThemeButton from "../components/ToggleThemeButton";
 import PriceShow from "../components/PriceShow";
 import useApiResults from "../hooks/useApiResults";
 
-const HomeScreen = () => {
+import globalStyle from "../styles/globalStyle";
+
+const HomeScreen = ({ theme, toggleTheme }) => {
 
     const bitPrice = useApiResults(); 
+    const styleWrapper = theme === 'dark' ? globalStyle.darkMode : globalStyle.lightMode;
+    
 
     return(
-        <View style={styles.container}>
-            <PriceShow results={bitPrice} />
-        </View>
+            <View style={styleWrapper}>
+                <View style={styles.container}>
+                    <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} />
+                    <PriceShow results={bitPrice} theme={theme} />
+                </View>
+            </View>
     );
 }
 
@@ -19,9 +27,9 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
-        width: "90%",
-        marginLeft: "5%"
+        width: "100%",
+        height: "100%",
+     
     }
 });
 

@@ -1,18 +1,53 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import React from "react";
+import { StatusBar } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from "./src/hooks/useDarkMode";
 
 import HomeScreen from "./src/screens/HomeScreen";
 
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      title: 'Bitcoin Prices'
+
+const App = () => {
+  const Stack = createStackNavigator();
+  const [theme, toggleTheme] = useDarkMode();
+  // const [theme, toggleTheme] = useState('dark');
+  const headerOptions = theme === 'dark' ? {
+    headerStyle: {
+      backgroundColor: '#00001c',
+      shadowRadius: 0,
+      shadowOffset: {
+        height: 0
+      }
+    },
+    headerTitleStyle: {
+      color: 'rgb(250,250,250)',
+    }
+  } : {
+    headerStyle: {
+      backgroundColor: 'white',
+      shadowRadius: 0,
+      shadowOffset: {
+        height: 0
+      }
+    },
+    headerTitleStyle: {
+      color: '#000',
     }
   }
-);
 
-export default createAppContainer(navigator);
+  return (
+    <NavigationContainer>
+        <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} />
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Bitcoin Task" 
+          component={(props) => <HomeScreen {...props} theme={theme} toggleTheme={toggleTheme} />}
+          options={headerOptions}
+        >
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+export default App;
