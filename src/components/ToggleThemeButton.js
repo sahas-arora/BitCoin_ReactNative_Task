@@ -7,7 +7,7 @@ const Toggle = ({ theme, toggleTheme }) => {
     const iconColor = theme === 'dark' ? 'white' : 'black';
     
     return(
-        <TouchableOpacity onPress={() => toggleTheme()}>
+        <TouchableOpacity onPress={() => toggleTheme()} style={{width: '15%', alignSelf: 'flex-end'}}>
             <Feather name={iconName} color={iconColor} size={35} style={styles.button} />
         </TouchableOpacity>
     );

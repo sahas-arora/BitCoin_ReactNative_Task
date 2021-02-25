@@ -40,16 +40,16 @@ const App = () => {
   return (
     <NavigationContainer>
         <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} />
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="Bitcoin Task" 
-          component={(props) => (
-          <HomeScreen {...props} theme={theme} toggleTheme={toggleTheme} />
-          )}
-          options={headerOptions}
-        >
-        </Stack.Screen>
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen 
+            name="Bitcoin Task" 
+            component={(props) => (
+            <HomeScreen {...props} theme={theme} toggleTheme={toggleTheme} />
+            )}
+            options={headerOptions}
+          >
+          </Stack.Screen>
+        </Stack.Navigator>
     </NavigationContainer>
   )
 }
