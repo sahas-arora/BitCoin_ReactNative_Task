@@ -10,6 +10,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 const App = () => {
   const Stack = createStackNavigator();
   const [theme, toggleTheme] = useDarkMode();
+  
 
   
   const headerOptions = theme === 'dark' ? {
@@ -21,7 +22,7 @@ const App = () => {
       }
     },
     headerTitleStyle: {
-      color: 'rgb(250,250,250)',
+      color: '#ff5019',
     }
   } : {
     headerStyle: {
@@ -42,7 +43,9 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen 
           name="Bitcoin Task" 
-          component={(props) => <HomeScreen {...props} theme={theme} toggleTheme={toggleTheme} />}
+          component={(props) => (
+          <HomeScreen {...props} theme={theme} toggleTheme={toggleTheme} />
+          )}
           options={headerOptions}
         >
         </Stack.Screen>
